@@ -1,22 +1,52 @@
 import { StyleSheet, Text, View, Image, SectionList,Pressable } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect , useContext,useState} from 'react'
 import { Company_Detail } from '../../Data/Company-Detail'
 import PickUp from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import MealItemComponent from './MealItemComponent';
 import RatingIconCoponent from './RatingIconCoponent';
 import { MealData } from '../../Data/Meal_Data';
+import { personalDetailCox } from '../../ContextConponents/PersonalDetailContext';
+
+function findDataById(idToFind) {
+    for (const category of MealData) {
+        const foundData = category.data.find(item => item.id === idToFind);
+        if (foundData) {
+            return foundData;
+        }
+    }
+    return null; // Return null if ID is not found
+}
 const MealItems = ({ route, navigation }) => {
+    const [selectedMealList, setSelectMealList] = useState([]);
+
+    const useMealRelatedContext = useContext(personalDetailCox);
     const companyId = route.params.companyId;
     const CompanyDetail = Company_Detail.filter((company) => company.id === companyId)[0];
+    let listOfMealOrder = [];
 
     const handleOrderPressButton = ()=>{
-        
+        if(useMealRelatedContext.ids.length === 0){
+           console.warn('Please select atlest one meal....');
+        }else{
+            navigation.navigate("OrderDetailScreen",{
+                compName: CompanyDetail.name,
+                listOfMealOrder: selectedMealList
+            })
+        }
+       
     }
     useEffect(() => {
         navigation.setOptions({
             title: CompanyDetail.name
         })
-    }, [navigation, CompanyDetail])
+
+        useMealRelatedContext.ids.forEach((id) => {
+            listOfMealOrder = [...listOfMealOrder, findDataById(id)]    
+        })
+
+        setSelectMealList(listOfMealOrder);
+        console.log(useMealRelatedContext.ids)
+    },[navigation,useMealRelatedContext])
     return (
         <View style={styles.mainContainer}>
             <View style={styles.companyDetailContainer}>

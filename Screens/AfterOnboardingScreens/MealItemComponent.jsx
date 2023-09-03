@@ -3,10 +3,10 @@ import React, {useState, useEffect,useContext} from 'react'
 import AddIcon from 'react-native-vector-icons/dist/AntDesign';
 import RatingIconCoponent from './RatingIconCoponent';
 import { personalDetailCox } from '../../ContextConponents/PersonalDetailContext';
+
 const MealItemComponent = (props) => {
     const addRemoveMealFromCart = useContext(personalDetailCox);
     const [checkMealAdd, setCheckMealAdd] = useState(false);
-    // const [chId, setChId] = useState('');
     const heandleAddMeal=(id)=>{
         if(checkMealAdd){
             setCheckMealAdd(false);
@@ -17,9 +17,8 @@ const MealItemComponent = (props) => {
         }
 
     }
-    // useEffect(()=>{
-    //     console.log(addRemoveMealFromCart.ids)
-    // })
+
+
     return (
                 <View style={styles.mealItemContainer}>
                     <Pressable style={({ pressed }) => pressed ? styles.itemButton : null} onPress={()=>heandleAddMeal(props.id)}>

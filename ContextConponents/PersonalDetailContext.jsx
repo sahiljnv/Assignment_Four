@@ -17,6 +17,8 @@ export default function PersonalDetailContext({ children }) {
   const removeMeal = (id) => {
       setMealItemIds((currentIds) => currentIds.filter((mealId) => mealId !== id))
   }
+
+
   const value = {
     number,
      setNumber,
@@ -34,7 +36,8 @@ export default function PersonalDetailContext({ children }) {
     setCountry, 
     ids: mealItemIds,
     addMeal: addMeal,
-    removeMeal: removeMeal
+    removeMeal: removeMeal,
+    
   }
   return (
     <personalDetailCox.Provider value={value}>

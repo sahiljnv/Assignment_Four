@@ -4,6 +4,7 @@ import OtpScreen from "./OnboardingScreens/OtpScreen";
 import PersonalDetailScreen from "./OnboardingScreens/PersonalDetailScreen";
 import HomeScreen from "./AfterOnboardingScreens/HomeScreen";
 import MealItems from "./AfterOnboardingScreens/MealItems";
+import OrderDetailScreen from "./AfterOnboardingScreens/OrderDetailScreen";
 import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
 import { personalDetailCox } from "../ContextConponents/PersonalDetailContext";
@@ -45,6 +46,20 @@ const AfterOnboardingScreens = () => {
 
         options={{
             
+            headerTintColor:'white',
+            headerTitleAlign:'center',
+            headerStyle:{
+                backgroundColor:'#f47e26'
+            }
+            
+
+        }} />
+         <Stack.Screen 
+        name="OrderDetailScreen" 
+        component={OrderDetailScreen} 
+
+        options={{
+            title:'Order Details',
             headerTintColor:'white',
             headerTitleAlign:'center',
             headerStyle:{
