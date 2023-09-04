@@ -22,7 +22,7 @@ const MealItemComponent = (props) => {
     return (
                 <View style={styles.mealItemContainer}>
                     <Pressable style={({ pressed }) => pressed ? styles.itemButton : null} onPress={()=>heandleAddMeal(props.id)}>
-                        <View style={styles.innermealItemCOntainer}>
+                        <View style={[styles.innermealItemCOntainer,{backgroundColor : checkMealAdd ? '#f4ac6b':'#fff8f2'}]}>
                             <View style={styles.itemImage}>
                                 <Image source={props.img} style={styles.mealImg} />
 
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     
     mealItemContainer: {
         width:364,// this is the error
-        backgroundColor: '#fff8f2',
+        backgroundColor: '',
         marginVertical:5
     },
     itemButton: {

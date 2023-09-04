@@ -5,21 +5,23 @@ import PersonalDetailScreen from "./OnboardingScreens/PersonalDetailScreen";
 import HomeScreen from "./AfterOnboardingScreens/HomeScreen";
 import MealItems from "./AfterOnboardingScreens/MealItems";
 import OrderDetailScreen from "./AfterOnboardingScreens/OrderDetailScreen";
-import { NavigationContainer} from '@react-navigation/native';
-import { createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { personalDetailCox } from "../ContextConponents/PersonalDetailContext";
-import {useContext} from 'react';
+import PlaceOrderScreen from "./AfterOnboardingScreens/PlaceOrderScreen";
+import FinishScreen from "./AfterOnboardingScreens/FinishScreen";
+import { useContext } from 'react';
 const Stack = createNativeStackNavigator();
 export default function NavigationScreen() {
     const useAppContext = useContext(personalDetailCox);
     return (
         <NavigationContainer>
-           
-               
-                {
-                    useAppContext.checkCompliteOnboarding ? <OnboardingStack />:<AfterOnboardingScreens />
-            
-                 }
+
+
+            {
+                useAppContext.checkCompliteOnboarding ? <OnboardingStack /> : <AfterOnboardingScreens />
+
+            }
 
         </NavigationContainer>
     )
@@ -37,40 +39,67 @@ const OnboardingStack = () => {
     )
 }
 const AfterOnboardingScreens = () => {
-    return(
+    return (
         <Stack.Navigator>
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen 
-        name="MealItems" 
-        component={MealItems} 
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen
+                name="MealItems"
+                component={MealItems}
 
-        options={{
-            
-            headerTintColor:'white',
-            headerTitleAlign:'center',
-            headerStyle:{
-                backgroundColor:'#f47e26'
-            }
-            
+                options={{
 
-        }} />
-         <Stack.Screen 
-        name="OrderDetailScreen" 
-        component={OrderDetailScreen} 
+                    headerTintColor: 'white',
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: '#f47e26'
+                    }
 
-        options={{
-            title:'Order Details',
-            headerTintColor:'white',
-            headerTitleAlign:'center',
-            headerStyle:{
-                backgroundColor:'#f47e26'
-            }
-            
 
-        }} />
+                }} />
+            <Stack.Screen
+                name="OrderDetailScreen"
+                component={OrderDetailScreen}
 
-    </Stack.Navigator>
+                options={{
+                    title: 'Order Details',
+                    headerTintColor: 'white',
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: '#f47e26'
+                    }
+
+
+                }} />
+            <Stack.Screen
+                name="PlaceOrder"
+                component={PlaceOrderScreen}
+
+                options={{
+                    title: 'Place Order',
+                    headerTintColor: 'white',
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: '#f47e26'
+                    }
+
+
+                }} />
+            <Stack.Screen
+                name="FinishScreen"
+                component={FinishScreen}
+
+                options={{
+                    title: '#Order No. 50',
+                    headerTintColor: 'white',
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: '#f47e26'
+                    }
+
+
+                }} />
+        </Stack.Navigator>
     )
-   
+
 
 }

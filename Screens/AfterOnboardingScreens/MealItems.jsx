@@ -45,7 +45,6 @@ const MealItems = ({ route, navigation }) => {
         })
 
         setSelectMealList(listOfMealOrder);
-        console.log(useMealRelatedContext.ids)
     },[navigation,useMealRelatedContext])
     return (
         <View style={styles.mainContainer}>

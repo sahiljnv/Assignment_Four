@@ -5,7 +5,7 @@ export default function PersonalDetailContext({ children }) {
   const [number, setNumber] = useState('');
   const [personName, setPersonName] = useState('');
   const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState('address');
   const [region, setRegion] = useState('');
   const [country, setCountry] = useState('');
   const [checkCompliteOnboarding, setCheckCompliteOnbording] = useState(false);

@@ -7,15 +7,18 @@ export default function OrderDetailScreen({ route, navigation }) {
     const listOfOrder = route.params.listOfMealOrder;
     const useMealIdsToPrintOrder = useContext(personalDetailCox);
     const [sumOfAllSelectedItem, setSumOfAllSelectedItem] = useState(0);
+
+     const orderButtonHandler= ()=>{
+        navigation.navigate('PlaceOrder',{
+            sumOfAllSelectedItem:sumOfAllSelectedItem
+        })
+     }
     useEffect(() => {
-        // const initialValue = 0;
-        // sumOfAllSelectedItem = listOfOrder.reduce((accumulator, currentValue)=>accumulator+currentValue,initialValue)
         let sum = 0;
         listOfOrder.forEach(meal => {
             sum += meal.price;
         });
         setSumOfAllSelectedItem(sum)
-        console.log(sumOfAllSelectedItem)
     }, [navigation, useMealIdsToPrintOrder])
 
     return (
@@ -65,22 +68,10 @@ export default function OrderDetailScreen({ route, navigation }) {
 
                         </View>
                     </View>
-
-
-
-
                 </ScrollView>
             </View>
-
-
-
-
-
-
-
-
             <View style={styles.placeOrder}>
-                <Pressable style={({ pressed }) => pressed ? styles.orderButton : null} >
+                <Pressable style={({ pressed }) => pressed ? styles.orderButton : null} onPress={orderButtonHandler} >
                     <View style={styles.innerOrderContainer}>
                         <Text style={styles.orderText}>Order Now</Text>
 
