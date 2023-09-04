@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View, Pressable, ScrollView, FlatList } from 'react-native'
-import React, { useContext, useState, useEffect } from 'react'
-import { personalDetailCox } from '../../ContextConponents/PersonalDetailContext';
+import React, {useState, useEffect } from 'react'
 
 export default function OrderDetailScreen({ route, navigation }) {
     const companyName = route.params.compName;
     const listOfOrder = route.params.listOfMealOrder;
-    const useMealIdsToPrintOrder = useContext(personalDetailCox);
     const [sumOfAllSelectedItem, setSumOfAllSelectedItem] = useState(0);
 
      const orderButtonHandler= ()=>{
@@ -19,7 +17,7 @@ export default function OrderDetailScreen({ route, navigation }) {
             sum += meal.price;
         });
         setSumOfAllSelectedItem(sum)
-    }, [navigation, useMealIdsToPrintOrder])
+    }, [navigation])
 
     return (
         <View style={styles.mainComponent}>
@@ -32,7 +30,7 @@ export default function OrderDetailScreen({ route, navigation }) {
                         {
                             listOfOrder.map((mealSelectedData) => {
                                 return (
-                                    <View style={styles.mealOrderComponent}>
+                                    <View key={mealSelectedData.id} style={styles.mealOrderComponent}>
                                         <View>
 
                                         </View>

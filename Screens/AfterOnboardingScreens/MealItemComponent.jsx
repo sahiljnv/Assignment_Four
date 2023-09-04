@@ -1,24 +1,28 @@
 import { StyleSheet, Text, View,Pressable,Image } from 'react-native'
-import React, {useState, useEffect,useContext} from 'react'
+import React, {useState} from 'react'
 import AddIcon from 'react-native-vector-icons/dist/AntDesign';
 import RatingIconCoponent from './RatingIconCoponent';
-import { personalDetailCox } from '../../ContextConponents/PersonalDetailContext';
 
 const MealItemComponent = (props) => {
-    const addRemoveMealFromCart = useContext(personalDetailCox);
+    const addMeal = (id) => {
+        setMealItemIds((currentIds) => [...currentIds, id])
+    }
+    const removeMeal = (id) => {
+        setMealItemIds((currentIds) => currentIds.filter((mealId) => mealId !== id))
+    }
+    
+
+    const {setMealItemIds} = props
     const [checkMealAdd, setCheckMealAdd] = useState(false);
     const heandleAddMeal=(id)=>{
         if(checkMealAdd){
             setCheckMealAdd(false);
-            addRemoveMealFromCart.removeMeal(id);
+            removeMeal(id);
         }else{
             setCheckMealAdd(true);
-            addRemoveMealFromCart.addMeal(id);
+            addMeal(id);
         }
-
     }
-
-
     return (
                 <View style={styles.mealItemContainer}>
                     <Pressable style={({ pressed }) => pressed ? styles.itemButton : null} onPress={()=>heandleAddMeal(props.id)}>

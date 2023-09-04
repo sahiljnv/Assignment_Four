@@ -16,13 +16,9 @@ export default function NavigationScreen() {
     const useAppContext = useContext(personalDetailCox);
     return (
         <NavigationContainer>
-
-
             {
-                useAppContext.checkCompliteOnboarding ? <OnboardingStack /> : <AfterOnboardingScreens />
-
+                useAppContext.checkCompliteOnboarding ? <AfterOnboardingScreens /> :  <OnboardingStack />
             }
-
         </NavigationContainer>
     )
 
@@ -100,6 +96,4 @@ const AfterOnboardingScreens = () => {
                 }} />
         </Stack.Navigator>
     )
-
-
 }

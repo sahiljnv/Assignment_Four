@@ -16,16 +16,19 @@ function findDataById(idToFind) {
     }
     return null; // Return null if ID is not found
 }
+
 const MealItems = ({ route, navigation }) => {
     const [selectedMealList, setSelectMealList] = useState([]);
 
     const useMealRelatedContext = useContext(personalDetailCox);
     const companyId = route.params.companyId;
     const CompanyDetail = Company_Detail.filter((company) => company.id === companyId)[0];
+    const [mealItemIds, setMealItemIds] = useState([]);
+
     let listOfMealOrder = [];
 
     const handleOrderPressButton = ()=>{
-        if(useMealRelatedContext.ids.length === 0){
+        if(mealItemIds.length === 0){
            console.warn('Please select atlest one meal....');
         }else{
             navigation.navigate("OrderDetailScreen",{
@@ -39,13 +42,12 @@ const MealItems = ({ route, navigation }) => {
         navigation.setOptions({
             title: CompanyDetail.name
         })
-
-        useMealRelatedContext.ids.forEach((id) => {
+        useMealRelatedContext.ids
+        mealItemIds.forEach((id) => {
             listOfMealOrder = [...listOfMealOrder, findDataById(id)]    
         })
-
         setSelectMealList(listOfMealOrder);
-    },[navigation,useMealRelatedContext])
+    },[navigation,useMealRelatedContext,setMealItemIds,mealItemIds])
     return (
         <View style={styles.mainContainer}>
             <View style={styles.companyDetailContainer}>
@@ -93,7 +95,7 @@ const MealItems = ({ route, navigation }) => {
                     sections={MealData}
                     keyExtractor={(item, index) => item + index}
                     renderItem={({ item }) => (
-                        <MealItemComponent img={item.img} mealName={item.name} mealPrice={item.price} mealSubTitle={item.ingredients} rating={item.rating} id={item.id} />
+                        <MealItemComponent img={item.img} mealName={item.name} mealPrice={item.price} mealSubTitle={item.ingredients} rating={item.rating} id={item.id} setMealItemIds={setMealItemIds} mealItemIds={mealItemIds} />
                     )}
                     renderSectionHeader={({ section: { title } }) => (
                         <Text style={styles.mealListTitle}>{title}</Text>
@@ -165,7 +167,8 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     IconContainer: {
-        alignSelf: 'flex-start'
+        alignSelf: 'flex-start',
+        
 
     },
     headerContainer: {

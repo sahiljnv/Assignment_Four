@@ -9,16 +9,6 @@ export default function PersonalDetailContext({ children }) {
   const [region, setRegion] = useState('');
   const [country, setCountry] = useState('');
   const [checkCompliteOnboarding, setCheckCompliteOnbording] = useState(false);
-  const [mealItemIds, setMealItemIds] = useState([]);
-
-  const addMeal = (id) => {
-      setMealItemIds((currentIds) => [...currentIds, id])
-  }
-  const removeMeal = (id) => {
-      setMealItemIds((currentIds) => currentIds.filter((mealId) => mealId !== id))
-  }
-
-
   const value = {
     number,
      setNumber,
@@ -33,10 +23,7 @@ export default function PersonalDetailContext({ children }) {
     checkCompliteOnboarding,
     setCheckCompliteOnbording,
     country,
-    setCountry, 
-    ids: mealItemIds,
-    addMeal: addMeal,
-    removeMeal: removeMeal,
+    setCountry
     
   }
   return (
