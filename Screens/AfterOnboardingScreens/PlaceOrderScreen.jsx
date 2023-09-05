@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, Pressable, TextInput, ScrollView } from 'react-native'
-import CheckBox from 'react-native-check-box';
+import { StyleSheet, Text, View, Pressable, TextInput } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { personalDetailCox } from '../../ContextConponents/PersonalDetailContext'
 const PlaceOrderScreen = ({ route, navigation }) => {
@@ -10,24 +9,24 @@ const PlaceOrderScreen = ({ route, navigation }) => {
     const changeAddressHandler = () => {
         setChangeAddressChange(!checkAddressChange)
     }
-    const orderButtonHandler= ()=>{
+    const orderButtonHandler = () => {
         navigation.navigate('FinishScreen');
     }
     return (
 
         <View style={styles.mainContainer}>
-           
-                <View style={styles.headerContainer}>
-                    <Text style={styles.headerTitle}>User Details</Text>
-                    <View style={styles.warningContainer}>
-                        <Text style={styles.warningText}>Please input correct information.</Text>
-                    </View>
+
+            <View style={styles.headerContainer}>
+                <Text style={styles.headerTitle}>User Details</Text>
+                <View style={styles.warningContainer}>
+                    <Text style={styles.warningText}>Please input correct information.</Text>
                 </View>
-                <>
+            </View>
+            <>
                 <View style={styles.detailContainer}>
-                    <TextInput style={styles.personlInfo} placeholder='Full Name' placeholderTextColor={'gray'} />
-                    <TextInput style={styles.personlInfo} placeholder='Email' placeholderTextColor={'gray'} />
-                    <TextInput style={styles.personlInfo} placeholder='Number' placeholderTextColor={'gray'} />
+                    <TextInput style={styles.personlInfo} placeholder='Full Name' placeholderTextColor={'gray'} value={usePersonalDetailCox.personName} />
+                    <TextInput style={styles.personlInfo} placeholder='Email' placeholderTextColor={'gray'} value={usePersonalDetailCox.email} />
+                    <TextInput style={styles.personlInfo} placeholder='Number' placeholderTextColor={'gray'} value={usePersonalDetailCox.number} />
                     <Text style={styles.detailTitle}>Address</Text>
                     {
                         checkAddressChange ?
@@ -60,15 +59,15 @@ const PlaceOrderScreen = ({ route, navigation }) => {
                     }
 
                     <Text style={styles.detailTitle}>Select Payment Method</Text>
-                    <View style={styles.checkBoxContainer}>
-                        <CheckBox isChecked={!isSelected} onClick={() => setSelection(!isSelected)} style={styles.checkBox} checkBoxColor='#f47e26' />
+                    <Pressable style={styles.checkBoxContainer} onPress={()=>setSelection(!isSelected)}>
+                        <View style={[styles.radioButton, {backgroundColor: isSelected ? '#f47e26': 'white'}]}></View>
                         <Text style={styles.checkBoxTitle}>Credit/Debit Card</Text>
-                    </View>
-                    <View style={styles.checkBoxContainer}>
-                        <CheckBox isChecked={isSelected} onClick={() => setSelection(!isSelected)} style={styles.checkBox} checkBoxColor='#f47e26' />
+                    </Pressable>
+                    <Pressable style={styles.checkBoxContainer} onPress={()=>setSelection(isSelected)}>
+                        <View style={[styles.radioButton,{backgroundColor: isSelected ? 'white': '#f47e26'}]}></View>
                         <Text style={styles.checkBoxTitle}>Cash of delivery</Text>
 
-                    </View>
+                    </Pressable>
 
                     <Text style={styles.detailTitle}>Order Summary</Text>
                     <View style={styles.PriceContainer}>
@@ -198,7 +197,8 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     checkBoxContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginTop:5
     },
     checkBoxTitle: {
         color: 'gray',
@@ -232,6 +232,13 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'left'
     },
+    radioButton: {
+        height: 20,
+        width: 20,
+        borderWidth: 2,
+        borderRadius: 10,
+        borderColor: '#f47e26'
+    }
 
 })
 

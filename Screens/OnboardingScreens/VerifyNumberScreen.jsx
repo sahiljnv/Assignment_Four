@@ -17,10 +17,8 @@ function checkNumber(number){
 
 export default function VerifyNumberScreen({navigation}) {
     const usePersonalDetail = useContext(personalDetailCox);
-    usePersonalDetail.setCountry(countryName)
-    const [countryName, setCountryName] = useState("Select Country...");
     const [modalVisible, setModalVisible] = useState(false);   
-    function navigateToNextSreen() {
+    const  navigateToNextSreen=()=>{
         if(usePersonalDetail.number.length >= 10 ){
             if(checkNumber(usePersonalDetail.number)){
                 navigation.navigate('OptScreen')
@@ -33,7 +31,7 @@ export default function VerifyNumberScreen({navigation}) {
         }
     }
     function selectLangHandler({ name , dial_code}) {
-        setCountryName(name);
+        usePersonalDetail.setCountry(name)
         usePersonalDetail.setNumber(dial_code)
         setModalVisible(false)
     }
@@ -58,7 +56,7 @@ export default function VerifyNumberScreen({navigation}) {
             <View style={styles.setLagContainer}>
                 <Text style={styles.inputLabel}>Enter Your Mobile Number</Text>
                 <Pressable style={styles.countryNameContainer} onPress={() => setModalVisible(true)}>
-                    <Text style={styles.countryTextName}>{countryName}</Text>
+                    <Text style={styles.countryTextName}>{usePersonalDetail.country}</Text>
                 </Pressable>
                 <Modal
                     animationType="none"
