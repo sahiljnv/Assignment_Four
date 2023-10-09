@@ -3,7 +3,7 @@ import React,{useContext} from 'react'
 import Arrow from 'react-native-vector-icons/AntDesign';
 import { personalDetailCox } from '../../../context_conponents/personal_detail_context';
 import { styles } from './/style';
-export default function PersonalDetailScreen() {
+const  PersonalDetailScreen=()=> {
    const usePersonalDetailCox = useContext(personalDetailCox);
     function handerFinishOnPress(){
         if( usePersonalDetailCox.personName !='' && usePersonalDetailCox.email != '' && usePersonalDetailCox.region != '' && usePersonalDetailCox.address !='' ){
@@ -18,7 +18,7 @@ export default function PersonalDetailScreen() {
         <View style={styles.mainContainer}>
             <View style={styles.upperContainer}>
                 <View style={styles.IconContainer}>
-                    <Image source={require('../../../Images/cookingLogo.jpg')} style={styles.img} />
+                    <Image source={require('../../../images/cooking-logo.jpg')} style={styles.img} />
                     <Text style={styles.title}>HungerOrder</Text>
                 </View>
             </View>
@@ -47,3 +47,4 @@ export default function PersonalDetailScreen() {
     )
 }
 
+export default  PersonalDetailScreen

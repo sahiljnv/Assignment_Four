@@ -1,16 +1,15 @@
 import {Text, View, Image, SectionList,Pressable } from 'react-native'
 import React, { useEffect , useContext,useState, FC} from 'react'
-import { Company_Detail } from '../../../Data/Company-Detail'
+import { COMPANY_DETAILS } from '../../../data/company_detail'
 import PickUp from 'react-native-vector-icons/MaterialCommunityIcons';
 import MealItemComponent from '../../../components/meal_item_component';
 import RatingIconCoponent from '../../../components/rating_icon_component';
-import { MealData } from '../../../Data/Meal_Data';
-import { dataProps } from '../../../Data/Meal_Data';
+import { dataProps,MEAL_DATA } from '../../../data/meals_data';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { stackAfterOnboardingParamsList } from '../../../navigation/dash_board_stack';
 import { PersonalDetailContextValue, personalDetailCox } from '../../../context_conponents/personal_detail_context';
 import { styles } from './style';
 import { findDataById } from '../../../utils/utilities';
+import { stackAfterOnboardingParamsList } from '../../../navigation/type';
 
 
 
@@ -21,7 +20,7 @@ const MealItems: FC<MealsItemsProps> = (props) => {
     const [selectedMealList, setSelectMealList] = useState<dataProps | null>();
     const useMealRelatedContext = useContext<PersonalDetailContextValue>(personalDetailCox);
     const companyId = route.params.companyId;
-    const CompanyDetail = Company_Detail.filter((company) => company.id === companyId)[0];
+    const CompanyDetail = COMPANY_DETAILS.filter((company) => company.id === companyId)[0];
     const [mealItemIds, setMealItemIds] = useState<string[]>([]);
 
     const handleOrderPressButton = (): void => {
@@ -42,7 +41,7 @@ const MealItems: FC<MealsItemsProps> = (props) => {
         // useMealRelatedContext.ids
         mealItemIds.forEach((id : string) => {
 
-            let item = findDataById(id,MealData)
+            let item = findDataById(id,MEAL_DATA)
             if (item!= null) {
                 listOfMealOrder?.push(item);
             }
@@ -94,7 +93,7 @@ const MealItems: FC<MealsItemsProps> = (props) => {
             <View style={styles.mealListCOnatainer}>
                 <SectionList
 
-                    sections={MealData}
+                    sections={MEAL_DATA}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
                         <MealItemComponent img={item.img} mealName={item.name} mealPrice={item.price} mealSubTitle={item.ingredients} rating={item.rating} id={item.id} 

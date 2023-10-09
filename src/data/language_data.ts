@@ -1,4 +1,4 @@
-export const languageData:string[] = [
+export const LANGUAGE:string[] = [
     'English',
     'Hindi',
     'French',

@@ -12,7 +12,7 @@ export type mealDataProps = {
     data: dataProps
 }[]
 
-export const MealData: mealDataProps = [
+export const MEAL_DATA: mealDataProps = [
 
     {
         title: 'Wrap',
@@ -22,7 +22,7 @@ export const MealData: mealDataProps = [
             ingredients: 'spicy paneer,onion,capsicum',
             rating: '4.5',
             price: 90,
-            img:require('../Images/mealsImages/cheese_wrap.jpg')
+            img:require('../images/meals_images/cheese-wrap.jpg')
         },
         {
             id:'2',
@@ -30,7 +30,7 @@ export const MealData: mealDataProps = [
             ingredients: 'Flat Parantha bread layered with spicy chicken tossed in special sauces',
             rating: '4.5',
             price: 99,
-            img: require('../Images/mealsImages/chicken_garlic_wrap.jpg')
+            img: require('../images/meals_images/chicken-garlic-wrap.jpg')
         },
         {
             id:'3',
@@ -38,7 +38,7 @@ export const MealData: mealDataProps = [
             ingredients: 'Chicken garlic prepared in garlic mixture and tossed on griller to melt in your mouth',
             rating: '4',
             price: 185,
-            img:require('../Images/mealsImages/Chicken_wrap.jpg')
+            img:require('../images/meals_images/chicken-wrap.jpg')
         }
         ]
     },
@@ -50,7 +50,7 @@ export const MealData: mealDataProps = [
             ingredients:'Heaven in a freshly baked bun, this burger has a melt in your mouth paneer patty served with onions',
             rating:'4.5',
             price:220,
-            img:require('../Images/mealsImages/paneer_burger.jpg')
+            img:require('../images/meals_images/paneer-burger.jpg')
         },
         {
             id:'5',
@@ -58,7 +58,7 @@ export const MealData: mealDataProps = [
             ingredients:'Patity of your choice double cheese, crispy bacon, served with mayo',
             rating:'4.2',
             price:140,
-            img:require('../Images/mealsImages/Mutto_bacon_cheese_burger.jpg')
+            img:require('../images/meals_vv  images/mutto-bacon-cheese-burger.jpg')
         },
         {
             id:'6',
@@ -66,7 +66,7 @@ export const MealData: mealDataProps = [
             ingredients:'Onion, tomato and herb patty',
             rating:'4',
             price:80,
-            img:require('../Images/mealsImages/Deluxe_Burger.jpg')
+            img:require('../images/meals_images/deluxe-burger.jpg')
         }
     ]
     }

@@ -2,10 +2,11 @@ import {Text, View, Pressable, ScrollView} from 'react-native'
 import React, {useState, useEffect } from 'react'
 import { styles } from './style';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { stackAfterOnboardingParamsList } from '../../../navigation/dash_board_stack';
+import { stackAfterOnboardingParamsList } from '../../../navigation/type';
 type navigationOrderDetailScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'OrderDetailScreen','StackAfterOnboarding'>;
 
-export default function OrderDetailScreen({ route, navigation }:navigationOrderDetailScreenProps) {
+const OrderDetailScreen: React.FC<navigationOrderDetailScreenProps>=(props)=> {
+    const { route, navigation } = props
     const companyName = route.params.compName;
     const listOfOrder =  route.params?.listOfMealOrder;
     const [sumOfAllSelectedItem, setSumOfAllSelectedItem] = useState(0);
@@ -88,3 +89,4 @@ export default function OrderDetailScreen({ route, navigation }:navigationOrderD
     )
 }
 
+export default OrderDetailScreen;

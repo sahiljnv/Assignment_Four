@@ -1,14 +1,15 @@
 import {Text, View, TextInput, Pressable, Image, Modal, FlatList, KeyboardAvoidingView, ScrollView } from 'react-native'
 import React, { useState, useContext } from 'react'
-import { CountryCode } from '../../../Data/CountryCode/CountryCodes';
+import { COUNTRY_CODE } from '../../../data/country_codes';
 import { personalDetailCox } from '../../../context_conponents/personal_detail_context';
 import { styles } from './style';
-import { stackOnboardingParamsList } from '../../../navigation/onboarding_stack';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { checkNumber } from '../../../utils/utilities';
+import { stackOnboardingParamsList } from '../../../navigation/type';
 
-export type navigationVerifyNumberProps = NativeStackScreenProps<stackOnboardingParamsList, 'VerifyNum','onboardingStack'>;
-export default function VerifyNumberScreen({ navigation }: navigationVerifyNumberProps):React.JSX.Element {
+export type navigationVerifyNumberProps = NativeStackScreenProps<stackOnboardingParamsList, 'VerifyNum'>;
+const  VerifyNumberScreen:React.FC<navigationVerifyNumberProps>=(props)=> {
+    const { navigation } = props
     const usePersonalDetail = useContext(personalDetailCox);
     const [modalVisible, setModalVisible] = useState<boolean>(false);
     const navigateToNextSreen = () => {
@@ -49,7 +50,7 @@ export default function VerifyNumberScreen({ navigation }: navigationVerifyNumbe
             <KeyboardAvoidingView style={{ flex: 1 }} behavior='position'>
                 <View style={styles.mainContainer}>
                     <View style={styles.IconContainer}>
-                        <Image source={require('../../../Images/cookingLogo.jpg')} style={styles.img} />
+                        <Image source={require('../../../images/cooking-logo.jpg')} style={styles.img} />
                         <Text style={styles.title}>HungerOrder</Text>
                     </View>
                     <View style={styles.setLagContainer}>
@@ -67,7 +68,7 @@ export default function VerifyNumberScreen({ navigation }: navigationVerifyNumbe
                             <View style={styles.centeredView}>
                                 <Text style={styles.modalTitle}>Country</Text>
                                 <FlatList
-                                    data={CountryCode}
+                                    data={COUNTRY_CODE}
                                     renderItem={renderCountry}
                                     keyExtractor={item => item.code}
                                 />
@@ -92,3 +93,4 @@ export default function VerifyNumberScreen({ navigation }: navigationVerifyNumbe
     )
 }
 
+export default VerifyNumberScreen

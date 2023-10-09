@@ -2,11 +2,12 @@ import { Text, View, TextInput,Pressable } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { personalDetailCox } from '../../../context_conponents/personal_detail_context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { stackOnboardingParamsList } from '../../../navigation/onboarding_stack';
 import { styles } from './style';
+import { stackOnboardingParamsList } from '../../../navigation/type';
 export type navigationOptScreenProps = NativeStackScreenProps<stackOnboardingParamsList, 'OptScreen','onboardingStack'>;
 
-export default function OtpScreen({ navigation }: navigationOptScreenProps) {
+const  OtpScreen : React.FC<navigationOptScreenProps>=(props)=> {
+    const { navigation } = props
     const useContextNumber = useContext(personalDetailCox);
     const [code, setCode] = useState<string>('');
     function onNextPageHandler(): void{
@@ -53,3 +54,4 @@ export default function OtpScreen({ navigation }: navigationOptScreenProps) {
     )
 }
 
+export default  OtpScreen;

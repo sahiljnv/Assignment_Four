@@ -7,7 +7,7 @@ type navigationHomeScreenProps = NativeStackScreenProps<stackAfterOnboardingPara
 
 import { styles } from './style';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { stackAfterOnboardingParamsList } from '../../navigation/dash_board_stack';
+import { stackAfterOnboardingParamsList } from '../../navigation/type';
 type companyContainerProps = {
   img: ImageSourcePropType,
   companyName: string,
@@ -18,7 +18,8 @@ type companyContainerProps = {
 }
 type HomeScreenNavigationProp = navigationHomeScreenProps['navigation'];
 
-const CompanyDetailComponent = ({ img, companyName, orderTime, workingTime, rating, id}: companyContainerProps) => {
+const CompanyDetailComponent = (props: companyContainerProps) => {
+  const { img, companyName, orderTime, workingTime, rating, id} = props
   const navigation: HomeScreenNavigationProp= useNavigation();
 
   const onPressHandler = () => {

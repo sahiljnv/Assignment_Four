@@ -1,12 +1,12 @@
 import { FlatList, View } from 'react-native'
-import { Company_Detail } from '../../../Data/Company-Detail';
 import CompanyDetailComponent from '../../../components/company_detail_component';
 import { styles } from './style';
+import { COMPANY_DETAILS } from '../../../data/company_detail';
 const HomeScreen = () => {
   return (
     <View style={styles.mainContainer}>
       <FlatList
-        data={Company_Detail}
+        data={COMPANY_DETAILS}
         renderItem={({ item }) =>
           <CompanyDetailComponent
             img={item.img}

@@ -1,17 +1,12 @@
 import React from 'react'
-
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SelectLagScreen from '../Screens/onboarding_screens/select_lang_screen';
-import VerifyNumberScreen from '../Screens/onboarding_screens/verify_number_screen';
-import OtpScreen from '../Screens/onboarding_screens/otp_screen';
-import PersonalDetailScreen from '../Screens/onboarding_screens/personal_detail_screen';
+import { stackOnboardingParamsList } from './type';
+import SelectLagScreen from '../screens/onboarding_screens/select_lang_screen';
+import VerifyNumberScreen from '../screens/onboarding_screens/verify_number_screen';
+import OtpScreen from '../screens/onboarding_screens/otp_screen';
+import PersonalDetailScreen from '../screens/onboarding_screens/personal_detail_screen';
 
-export type stackOnboardingParamsList = {
-    SelectLag :undefined,
-    VerifyNum : undefined,
-    OptScreen: undefined,
-    PersonalDetail : undefined
-}
+
 
 const onboardingStack = createNativeStackNavigator<stackOnboardingParamsList>();
 const OnboardingStack = () => {

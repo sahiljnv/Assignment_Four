@@ -1,19 +1,12 @@
 import React from 'react'
-import MealItems from "../Screens/dash_board_screens/mealItems";
-import OrderDetailScreen from "../Screens/dash_board_screens/order_detail_screen";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import PlaceOrderScreen from "../Screens/dash_board_screens/place_order_screen";
-import FinishScreen from "../Screens/dash_board_screens/finish_screen";
-import { dataProps } from "../Data/Meal_Data";
-import HomeScreen from '../Screens/dash_board_screens/home_screen';
+import { stackAfterOnboardingParamsList } from './type';
+import MealItems from '../screens/dash_board_screens/mealItems';
+import HomeScreen from '../screens/dash_board_screens/home_screen';
+import OrderDetailScreen from '../screens/dash_board_screens/order_detail_screen';
+import PlaceOrderScreen from '../screens/dash_board_screens/place_order_screen';
+import FinishScreen from '../screens/dash_board_screens/finish_screen';
 
-export type stackAfterOnboardingParamsList = {
-    HomeScreen : undefined,
-    MealItems : { companyId: String},
-    OrderDetailScreen: {compName:string, listOfMealOrder:dataProps | undefined|null},
-    PlaceOrder : {sumOfAllSelectedItem:number}
-    FinishScreen : undefined
-}
 
 const StackAfterOnboarding = createNativeStackNavigator<stackAfterOnboardingParamsList>();
 

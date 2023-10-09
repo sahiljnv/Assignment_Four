@@ -1,11 +1,13 @@
 import {Text, View, Image, Pressable, Modal } from 'react-native'
 import React, { useState } from 'react'
-import { languageData } from '../../../Data/Language-Data';
-import { stackOnboardingParamsList } from '../../../navigation/onboarding_stack';
+import { LANGUAGE } from '../../../data/language_data';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { styles } from './style';
+import { stackOnboardingParamsList } from '../../../navigation/type';
 export type navigationSelectLangProps = NativeStackScreenProps<stackOnboardingParamsList, 'SelectLag'>;
-function SelectLagScreen({ navigation }: navigationSelectLangProps) :React.JSX.Element{
+
+const SelectLagScreen:React.FC<navigationSelectLangProps>=(props)=>{
+    const { navigation } = props
     const [language, setLanguage] = useState<string>('Select.....')
     const [modalVisible, setModalVisible] = useState<boolean>(false)
 
@@ -22,7 +24,7 @@ function SelectLagScreen({ navigation }: navigationSelectLangProps) :React.JSX.E
     return (
         <View style={styles.mainContainer}>
             <View style={styles.IconContainer}>
-                <Image source={require('../../../Images/cookingLogo.jpg')} style={styles.img} />
+                <Image source={require('../../../images/cooking-logo.jpg')} style={styles.img} />
                 <Text style={styles.title}>HungerOrder</Text>
             </View>
             <View style={styles.setLagContainer}>
@@ -40,7 +42,7 @@ function SelectLagScreen({ navigation }: navigationSelectLangProps) :React.JSX.E
                     <View style={styles.centeredView}>
                         <Text style={styles.modalTitle}>Languages</Text>
                         {
-                            languageData.map((item)=>{
+                            LANGUAGE.map((item)=>{
                                 return (
                                     <Pressable key={item} style={styles.langContainer} onPress={()=>selectLangHandler(item)}>
                                         <Text key={item} style={styles.langName}>{item}</Text>

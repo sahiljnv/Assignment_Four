@@ -1,4 +1,4 @@
-import { mealDataProps } from "../Data/Meal_Data";
+import { mealDataProps } from "../data/meals_data";
 
 export const addMeal = (id:string) => {
     return ((currentIds: string[]) => [...currentIds, id])

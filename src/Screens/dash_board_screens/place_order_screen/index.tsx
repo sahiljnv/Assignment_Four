@@ -3,10 +3,11 @@ import React, { useContext, useState } from 'react'
 import { styles } from './style';
 import { personalDetailCox } from '../../../context_conponents/personal_detail_context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { stackAfterOnboardingParamsList } from '../../../navigation/dash_board_stack';
+import { stackAfterOnboardingParamsList } from '../../../navigation/type';
 type navigationPlaceOrderScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'PlaceOrder','StackAfterOnboarding'>;
 
-const PlaceOrderScreen = ({ route, navigation }:navigationPlaceOrderScreenProps) => {
+const PlaceOrderScreen : React.FC<navigationPlaceOrderScreenProps>= (props) => {
+    const { route, navigation } = props
     const sumOfAllSelectedItem = route.params.sumOfAllSelectedItem;
     const usePersonalDetailCox = useContext(personalDetailCox);
     const [checkAddressChange, setChangeAddressChange] = useState(false);

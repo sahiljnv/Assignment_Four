@@ -1,4 +1,4 @@
- export const CountryCode = [
+ export const COUNTRY_CODE = [
 {
 "name": "Afghanistan",
 "dial_code": "+93",
