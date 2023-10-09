@@ -2,7 +2,11 @@ import {Text, View, Pressable, TextInput } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { styles } from './style';
 import { personalDetailCox } from '../../../context_conponents/personal_detail_context';
-const PlaceOrderScreen = ({ route, navigation }) => {
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { stackAfterOnboardingParamsList } from '../../../navigation/dash_board_stack';
+type navigationPlaceOrderScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'PlaceOrder','StackAfterOnboarding'>;
+
+const PlaceOrderScreen = ({ route, navigation }:navigationPlaceOrderScreenProps) => {
     const sumOfAllSelectedItem = route.params.sumOfAllSelectedItem;
     const usePersonalDetailCox = useContext(personalDetailCox);
     const [checkAddressChange, setChangeAddressChange] = useState(false);

@@ -18,7 +18,7 @@ type MealsItemsProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'M
 
 const MealItems: FC<MealsItemsProps> = (props) => {
     const {navigation, route} = props;
-    const [selectedMealList, setSelectMealList] = useState<dataProps|undefined | null>();
+    const [selectedMealList, setSelectMealList] = useState<dataProps | null>();
     const useMealRelatedContext = useContext<PersonalDetailContextValue>(personalDetailCox);
     const companyId = route.params.companyId;
     const CompanyDetail = Company_Detail.filter((company) => company.id === companyId)[0];

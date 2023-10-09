@@ -1,7 +1,12 @@
 import {Text, View } from 'react-native'
 import React from 'react'
 import { styles } from './style';
-export default function FinishScreen({navigation}) {
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { stackAfterOnboardingParamsList } from '../../../navigation/dash_board_stack';
+ 
+type navigationFinishScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'FinishScreen'>;
+
+const  FinishScreen=({navigation}: navigationFinishScreenProps)=> {
     const currentDate = new Date();
   return (
     <View style={styles.mainContainer}>
@@ -14,3 +19,4 @@ export default function FinishScreen({navigation}) {
   )
 }
 
+export default FinishScreen;

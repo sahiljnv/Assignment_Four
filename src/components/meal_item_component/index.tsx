@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Pressable,Image,ImageSourcePropType } from 'react-native'
+import { Text, View,Pressable,Image,ImageSourcePropType } from 'react-native'
 import React, {useState, Dispatch, SetStateAction} from 'react'
 import AddIcon from 'react-native-vector-icons/AntDesign';
 import RatingIconCoponent from '../rating_icon_component';

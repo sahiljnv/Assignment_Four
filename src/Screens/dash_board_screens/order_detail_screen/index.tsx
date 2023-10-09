@@ -1,9 +1,13 @@
 import {Text, View, Pressable, ScrollView} from 'react-native'
 import React, {useState, useEffect } from 'react'
 import { styles } from './style';
-export default function OrderDetailScreen({ route, navigation }) {
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { stackAfterOnboardingParamsList } from '../../../navigation/dash_board_stack';
+type navigationOrderDetailScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'OrderDetailScreen','StackAfterOnboarding'>;
+
+export default function OrderDetailScreen({ route, navigation }:navigationOrderDetailScreenProps) {
     const companyName = route.params.compName;
-    const listOfOrder = route.params.listOfMealOrder;
+    const listOfOrder =  route.params?.listOfMealOrder;
     const [sumOfAllSelectedItem, setSumOfAllSelectedItem] = useState(0);
 
      const orderButtonHandler= ()=>{
@@ -13,9 +17,11 @@ export default function OrderDetailScreen({ route, navigation }) {
      }
     useEffect(() => {
         let sum = 0;
-        listOfOrder.forEach(meal => {
-            sum += meal.price;
-        });
+            listOfOrder?.forEach(meal => {
+                sum += meal.price;
+            });
+        
+       
         setSumOfAllSelectedItem(sum)
     }, [navigation])
 
@@ -28,7 +34,7 @@ export default function OrderDetailScreen({ route, navigation }) {
                 <ScrollView>
                     <View style={styles.showAllSelectetItem}>
                         {
-                            listOfOrder.map((mealSelectedData) => {
+                            listOfOrder?.map((mealSelectedData) => {
                                 return (
                                     <View key={mealSelectedData.id} style={styles.mealOrderComponent}>
                                         <View>

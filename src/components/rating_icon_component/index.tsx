@@ -1,7 +1,13 @@
 import {Text, View } from 'react-native'
 import React from 'react'
 import { styles } from './style'
-const RatingIconCoponent = (props) => {
+
+type RatingIconProps = {
+    rating: string,
+    backgroundColor:string,
+    color:string
+}
+const RatingIconCoponent = (props : RatingIconProps) => {
 
     return (
         <View style={[styles.reviewIon, {backgroundColor:props.backgroundColor}]} >

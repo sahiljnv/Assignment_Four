@@ -12,16 +12,14 @@ export type stackAfterOnboardingParamsList = {
     HomeScreen : undefined,
     MealItems : { companyId: String},
     OrderDetailScreen: {compName:string, listOfMealOrder:dataProps | undefined|null},
-    PlaceOrder : undefined
+    PlaceOrder : {sumOfAllSelectedItem:number}
     FinishScreen : undefined
 }
 
 const StackAfterOnboarding = createNativeStackNavigator<stackAfterOnboardingParamsList>();
 export type navigationMealItemsScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'MealItems','StackAfterOnboarding'>;
 export type navigationHomeScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'HomeScreen','StackAfterOnboarding'>;
-export type navigationOrderDetailScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'OrderDetailScreen','StackAfterOnboarding'>;
 export type navigationPlaceOrderScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'PlaceOrder','StackAfterOnboarding'>;
-export type navigationFinishScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'FinishScreen','StackAfterOnboarding'>;
 
 const AfterOnboardingScreens = () => {
     return (
