@@ -3,8 +3,11 @@ import React from 'react'
 import Delivery from 'react-native-vector-icons/MaterialIcons';
 import PickUp from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
-import { navigationHomeScreenProps } from '../../navigation/dash_board_stack';
+type navigationHomeScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'HomeScreen'>;
+
 import { styles } from './style';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { stackAfterOnboardingParamsList } from '../../navigation/dash_board_stack';
 type companyContainerProps = {
   img: ImageSourcePropType,
   companyName: string,

@@ -4,7 +4,6 @@ import OrderDetailScreen from "../Screens/dash_board_screens/order_detail_screen
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PlaceOrderScreen from "../Screens/dash_board_screens/place_order_screen";
 import FinishScreen from "../Screens/dash_board_screens/finish_screen";
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { dataProps } from "../Data/Meal_Data";
 import HomeScreen from '../Screens/dash_board_screens/home_screen';
 
@@ -17,9 +16,6 @@ export type stackAfterOnboardingParamsList = {
 }
 
 const StackAfterOnboarding = createNativeStackNavigator<stackAfterOnboardingParamsList>();
-export type navigationMealItemsScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'MealItems','StackAfterOnboarding'>;
-export type navigationHomeScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'HomeScreen','StackAfterOnboarding'>;
-export type navigationPlaceOrderScreenProps = NativeStackScreenProps<stackAfterOnboardingParamsList, 'PlaceOrder','StackAfterOnboarding'>;
 
 const AfterOnboardingScreens = () => {
     return (
